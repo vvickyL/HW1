@@ -1,0 +1,72 @@
+import turtle as t
+import random
+import threading
+import time
+import tkinter as tk
+from turtle import *
+
+
+
+t.screensize(bg='wheat')  
+ 
+def loving_heart(r):
+    l = 2 * r
+    t.left(45)
+    t.forward(l)
+    t.circle(r, 180)
+    t.right(90)
+    t.circle(r, 180)
+    t.forward(l)
+ 
+
+def tree(d, s):
+    if d <= 0:
+        return
+    t.forward(s)
+    tree(d - 1.2, s * 0.8)
+    t.right(120)
+    tree(d - 3.5, s * .6)
+    t.right(120)
+    tree(d - 3.5, s * .6)
+    t.right(120)
+    t.backward(s) 
+
+t.penup()
+t.goto(0, 200) 
+t.pendown()
+t.pencolor('red') 
+t.color('red')
+t.begin_fill()  
+loving_heart(10)  
+t.end_fill()
+ 
+
+n = 100
+t.speed(0)
+# t.Turtle().screen.delay(0)
+t.right(225)
+t.color("dark green")
+t.backward(n * 4.8)
+tree(15, n)
+t.backward(n / 5)
+
+
+def drawsnow(): 
+    t.speed(0)
+    t.ht()  
+    t.pensize(3) 
+    for i in range(20): 
+        t.pencolor("white")  
+        t.pu()  
+        t.setx(random.randint(-350, 350)) 
+        t.sety(random.randint(-100, 350)) 
+        t.pd()  
+        dens = 6  
+        snowsize = random.randint(1, 10)  
+        for j in range(dens):  
+            # t.forward(int(snowsize)) 
+            t.fd(int(snowsize))
+            t.backward(int(snowsize))
+            # t.bd(int(snowsize))  
+            t.right(int(360 / dens))  
+drawsnow()
